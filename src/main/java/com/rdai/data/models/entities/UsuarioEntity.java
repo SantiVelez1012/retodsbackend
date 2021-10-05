@@ -30,10 +30,10 @@ public class UsuarioEntity {
 
     private String pais;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
-    private Integer idRol;
 
+    @JoinColumn(name="fk_rol")
+    @ManyToOne
+    private RolEntity rol;
 
 
     public Integer getId() {
@@ -60,7 +60,7 @@ public class UsuarioEntity {
         return pais;
     }
 
-    public Integer getIdRol() {
-        return idRol;
+    public RolEntity geRol() {
+        return rol;
     }
 }
