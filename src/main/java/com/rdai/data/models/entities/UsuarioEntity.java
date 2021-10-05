@@ -18,13 +18,13 @@ public class UsuarioEntity {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name="nombre_usuario")
-    private String nombre_usuario;
+    @Column(name="nombre_usuario", unique = true)
+    private String nombreUsuario;
 
     private String password;
 
     @Column(name="nombre_completo")
-    private String nombre_completo;
+    private String nombreCompleto;
 
     private String ciudad;
 
@@ -40,16 +40,16 @@ public class UsuarioEntity {
         return id;
     }
 
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public String getNombre_completo() {
-        return nombre_completo;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
     public String getCiudad() {
