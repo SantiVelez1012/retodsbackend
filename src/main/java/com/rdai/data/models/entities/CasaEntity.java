@@ -26,6 +26,8 @@ public class CasaEntity {
 
     private String[] fotos;
 
+    private String estado;
+
     @JoinColumn(name = "fk_propietario")
     @ManyToOne
     private UsuarioEntity usuarioEntity;
@@ -53,6 +55,8 @@ public class CasaEntity {
     public String[] getFotos() {
         return fotos;
     }
+
+    public String getEstado(){return estado;}
 
     public UsuarioEntity getUsuarioEntity() {
         return usuarioEntity;

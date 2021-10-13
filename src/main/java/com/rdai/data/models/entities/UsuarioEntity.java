@@ -35,6 +35,13 @@ public class UsuarioEntity {
     @ManyToOne
     private RolEntity rol;
 
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -60,7 +67,7 @@ public class UsuarioEntity {
         return pais;
     }
 
-    public RolEntity geRol() {
+    public RolEntity getRol() {
         return rol;
     }
 }
