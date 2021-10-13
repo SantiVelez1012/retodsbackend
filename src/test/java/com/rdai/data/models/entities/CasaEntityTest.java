@@ -3,7 +3,7 @@ package com.rdai.data.models.entities;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CasaEntityTest {
+class CasaEntityTest {
 
     CasaEntity house = new CasaEntity();
 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class DisponibilidadCasaEntityTest {
+class DisponibilidadCasaEntityTest {
 
     DisponibilidadCasaEntity disp = new DisponibilidadCasaEntity();
 
