@@ -31,8 +31,16 @@ public class DisponibilidadCasaEntity {
     @ManyToOne
     private CasaEntity casaEntity;
 
+    @JoinColumn(name = "fk_usuario_reservado")
+    @ManyToOne
+    private UsuarioEntity usuarioReservado;
+
     public Integer getIdDisp() {
         return idDisp;
+    }
+
+    public UsuarioEntity getUsuarioReservado() {
+        return usuarioReservado;
     }
 
     public String getFechaInicio() {
