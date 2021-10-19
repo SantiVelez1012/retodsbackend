@@ -17,9 +17,14 @@ public class MainUsuario implements UserDetails {
     private String password;
     private String ciudad;
     private String pais;
+    private String rol;
     private Collection<? extends GrantedAuthority> authorities;
 
+    public static MainUsuario build(UsuarioEntity usuarioEntity){
 
+
+        return null;
+    }
 
 
     @Override
