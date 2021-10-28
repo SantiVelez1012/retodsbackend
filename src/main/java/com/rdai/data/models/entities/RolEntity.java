@@ -1,7 +1,7 @@
 package com.rdai.data.models.entities;
 
 
-//import com.rdai.data.models.enums.NombreRol;
+import com.rdai.data.models.enums.NombreRol;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -21,13 +21,14 @@ public class RolEntity {
     private Integer idRol;
 
     @Column(name = "nombre_rol")
-    private String nombreRol;
+    @Enumerated(EnumType.STRING)
+    private NombreRol nombreRol;
 
     public Integer getIdRol() {
         return idRol;
     }
 
-    public String getNombreRol() {
+    public NombreRol getNombreRol() {
         return nombreRol;
     }
 

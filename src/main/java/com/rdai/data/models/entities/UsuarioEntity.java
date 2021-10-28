@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,9 +33,9 @@ public class UsuarioEntity {
     private String pais;
 
 
-    @JoinColumn(name="fk_rol")
-    @ManyToOne
-    private RolEntity rol;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<RolEntity> rolEntity = new HashSet<>();
 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
@@ -67,7 +69,7 @@ public class UsuarioEntity {
         return pais;
     }
 
-    public RolEntity getRol() {
-        return rol;
+    public Set<RolEntity> getRolEntity() {
+        return rolEntity;
     }
 }
