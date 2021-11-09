@@ -17,11 +17,15 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepo;
 
-    private Optional<UsuarioEntity> getByUsername(String username){
+    public UsuarioEntity crearUsuario (UsuarioEntity usuarioEntity) {
+        return usuarioRepo.save(usuarioEntity);
+    }
+
+    public Optional<UsuarioEntity> getByUsername(String username){
         return usuarioRepo.findByNombreUsuario(username);
     }
 
-    private boolean existsByUsername(String username){
+    public boolean existsByUsername(String username){
         return usuarioRepo.existsByNombreUsuario(username);
     }
 
