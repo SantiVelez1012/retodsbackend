@@ -1,6 +1,7 @@
 package com.rdai.domain.services;
 
 import com.rdai.data.models.entities.RolEntity;
+import com.rdai.data.models.enums.NombreRol;
 import com.rdai.data.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class RolService {
     private RolRepository rolRepo;
 
 
-    public Optional<RolEntity> getByNombreRol(String nombreRol){
+    public Optional<RolEntity> getByNombreRol(NombreRol nombreRol){
 
         return rolRepo.findByNombreRol(nombreRol);
 
