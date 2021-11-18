@@ -1,0 +1,37 @@
+#PETICION REGISTRO USUARIO (SI SE DEJA LOS ROLES VACIO, SERA SOLO VIAJERO)
+POST http://localhost:8080/AUTH/NUEVO-USUARIO
+content-type: application/json
+
+{
+    "nombreUsuario":"admin2",
+    "password":"admin2",
+    "nombreCompleto":"Usuario prueba 2",
+    "ciudad":"Caldas",
+    "pais":"Colombia",
+    "roles":[]
+}
+
+#################################################
+# PETICION LOGIN
+
+
+POST http://localhost:8080/AUTH/LOGIN
+content-type:application/json
+
+{
+
+    "nombreUsuario":"admin",
+    "password":"admin"
+
+}
+
+####################################################
+
+# PETICION TOKEN REFRESH
+
+POST http://localhost:8080/AUTH/REFRESH_TOKEN
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYzNzI1NDQwNCwicm9sZXMiOlsiVklBSkVSTyIsIkFORklUUklPTiJdLCJleHAiOjE2MzcyNTQ0MDh9.Qmzkoq0Lz6nJnpXfXaVa7UcavTtmgnlQMPNJuOuvoNpwExP-BvKwgM5qOB1UlF2LEeEZtGXLeeqXrHKTttVmDw"
+}
