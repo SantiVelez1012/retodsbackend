@@ -7,14 +7,12 @@ import com.rdai.api.validations.LoginValidation;
 import com.rdai.api.validations.MessageValidation;
 import com.rdai.api.validations.UserValidation;
 import com.rdai.domain.services.UsuarioService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.ParseException;
@@ -33,13 +31,13 @@ public class AuthController {
 
     @Autowired
     private AuthUtil authUtil;
-
+    @CrossOrigin
     @PostMapping(NUEVO_USUARIO)
     public ResponseEntity<MessageValidation> nuevoUsuario(@Valid @RequestBody
                                                           UserValidation userValidation, BindingResult bindingResult){
 
         if(bindingResult.hasErrors())
-            return new ResponseEntity<>(new MessageValidation("Campos mal puestos"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MessageValidation("Campos mal puestos"), HttpStatus.NOT_ACCEPTABLE);
 
         if(Boolean.TRUE.equals(usuarioService.existsByUsername(userValidation.getNombreUsuario())))
             return new ResponseEntity<>(new MessageValidation("El nombre se encuentra en uso"), HttpStatus.BAD_REQUEST);
@@ -54,7 +52,7 @@ public class AuthController {
 
 
     }
-
+    @CrossOrigin
     @PostMapping(LOGIN)
     public ResponseEntity<JwtValidation> loginUsuario(@Valid @RequestBody
                                                       LoginValidation loginValidation, BindingResult bindingResult){
@@ -64,7 +62,7 @@ public class AuthController {
         return new ResponseEntity<>(authUtil.autenticarUsuario(loginValidation), HttpStatus.OK);
 
     }
-
+    @CrossOrigin
     @PostMapping(REFRESH_TOKEN)
     public ResponseEntity<JwtValidation> refreshToken(@Valid @RequestBody
                                                       JwtValidation jwtValidation, BindingResult bindingResult)
