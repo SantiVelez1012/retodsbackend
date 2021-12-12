@@ -16,10 +16,18 @@ public class RoleCreate implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        RolEntity rolAnfitrion = new RolEntity(null,NombreRol.ANFITRION);
-        RolEntity rolViajero = new RolEntity(null, NombreRol.VIAJERO);
-        rolService.crearRol(rolAnfitrion);
-        rolService.crearRol(rolViajero);
+
+        if(!rolService.existsByNombreRol(NombreRol.ANFITRION) && !rolService.existsByNombreRol(NombreRol.VISITANTE))
+        {
+            RolEntity rolAnfitrion = new RolEntity(null,NombreRol.ANFITRION);
+            RolEntity rolViajero = new RolEntity(null, NombreRol.VIAJERO);
+            rolService.crearRol(rolAnfitrion);
+            rolService.crearRol(rolViajero);
+        }else{
+            System.out.println("Los roles ya estan creados");
+        }
+
+
     }
 
 

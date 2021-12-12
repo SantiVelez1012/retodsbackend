@@ -28,4 +28,8 @@ public class RolService {
         return rolRepo.save(rol);
     }
 
+    public boolean existsByNombreRol(NombreRol nombreRol){
+        return rolRepo.existsByNombreRol(nombreRol);
+    }
+
 }
