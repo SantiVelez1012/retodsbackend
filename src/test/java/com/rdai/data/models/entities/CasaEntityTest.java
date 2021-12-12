@@ -10,7 +10,7 @@ class CasaEntityTest {
     private void createHouse(){
         house = CasaEntity.builder().idCasa(1).ciudad("Caldas").pais("Colombia")
                 .telefono("2168546").direccion("cra 25 b 331 sur 82")
-                .estado("Antioquia").fotos(null).usuarioEntity(null).build();
+                .estado("Antioquia").foto(null).usuarioEntity(null).build();
     }
 
 
@@ -22,7 +22,7 @@ class CasaEntityTest {
         assertEquals("Caldas", house.getCiudad());
         assertEquals("Colombia", house.getPais());
         assertEquals("2168546", house.getTelefono());
-        assertNull(house.getFotos());
+        assertNull(house.getFoto());
         assertNull(house.getUsuarioEntity());
         assertEquals("cra 25 b 331 sur 82", house.getDireccion());
         assertEquals("Antioquia", house.getEstado());

@@ -24,7 +24,7 @@ public class CasaEntity {
 
     private String telefono;
 
-    private String[] fotos;
+    private String foto;
 
     private String estado;
 
@@ -52,8 +52,8 @@ public class CasaEntity {
         return telefono;
     }
 
-    public String[] getFotos() {
-        return fotos;
+    public String getFoto() {
+        return foto;
     }
 
     public String getEstado(){return estado;}
