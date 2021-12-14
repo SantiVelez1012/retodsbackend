@@ -56,7 +56,7 @@ public class CasaEntity {
         return foto;
     }
 
-    public String getEstado(){return estado;}
+    public String getEstado(){ return estado; }
 
     public UsuarioEntity getUsuarioEntity() {
         return usuarioEntity;
