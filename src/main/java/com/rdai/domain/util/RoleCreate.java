@@ -17,7 +17,7 @@ public class RoleCreate implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        if(!rolService.existsByNombreRol(NombreRol.ANFITRION) && !rolService.existsByNombreRol(NombreRol.VISITANTE))
+        if(!rolService.existsByNombreRol(NombreRol.ANFITRION) && !rolService.existsByNombreRol(NombreRol.VIAJERO))
         {
             RolEntity rolAnfitrion = new RolEntity(null,NombreRol.ANFITRION);
             RolEntity rolViajero = new RolEntity(null, NombreRol.VIAJERO);
