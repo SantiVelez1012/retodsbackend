@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class CasaValidation {
 
+    private String idCasa;
+
     @NotNull
     @NotBlank
     private String direccion;
