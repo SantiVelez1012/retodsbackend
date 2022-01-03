@@ -26,6 +26,7 @@ class CalificacionCasaEntityTest {
         assertEquals(5, calificacionCasa.getCalificacion());
         assertEquals("Buenardo", calificacionCasa.getComentario());
         assertNull(calificacionCasa.getCasa());
+
     }
 
 
