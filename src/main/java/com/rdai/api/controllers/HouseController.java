@@ -27,8 +27,9 @@ public class HouseController {
 
     private HouseCreation houseCreation;
 
+    @CrossOrigin
     @PostMapping(SAVE)
-    @PreAuthorize("hasRole('ANFITRION')")
+    @PreAuthorize("hasRole('anfitrion')")
     public ResponseEntity<MessageValidation> guardarCasa(@Valid @RequestBody CasaValidation casaValidation,
                                                          BindingResult bindingResult,
                                                          @RequestHeader("Authorization") String token){

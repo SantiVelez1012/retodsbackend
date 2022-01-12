@@ -1,15 +1,17 @@
 package com.rdai.api.validations;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class JwtValidation {
 
     @NotNull
