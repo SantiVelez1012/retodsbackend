@@ -2,16 +2,20 @@ package com.rdai.api.validations;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class CasaValidation {
 
     private String idCasa;
+
+    private String idPropietario;
 
     @NotNull
     @NotBlank
@@ -39,6 +43,22 @@ public class CasaValidation {
 
     public String getDireccion() {
         return direccion;
+    }
+
+    public String getIdCasa() {
+        return idCasa;
+    }
+
+    public void setIdCasa(String idCasa) {
+        this.idCasa = idCasa;
+    }
+
+    public String getIdPropietario() {
+        return idPropietario;
+    }
+
+    public void setIdPropietario(String idPropietario) {
+        this.idPropietario = idPropietario;
     }
 
     public void setDireccion(String direccion) {
