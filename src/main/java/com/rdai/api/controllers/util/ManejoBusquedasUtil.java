@@ -43,7 +43,7 @@ public class ManejoBusquedasUtil {
 
     public List<CasaValidation> busquedaPorCriterio(SearchValidation searchValidation){
 
-        return bCasaService.getByCriterio(searchValidation).stream().map(casa ->
+        return bCasaService.getByCriterial(searchValidation).stream().map(casa ->
             CasaValidation.builder().idCasa(casa.getIdCasa().toString())
                     .idPropietario(casa.getUsuarioEntity().getNombreUsuario()).pais(casa.getPais())
                     .estado(casa.getEstado()).ciudad(casa.getCiudad()).telefono(casa.getTelefono())

@@ -7,7 +7,9 @@ import com.rdai.data.models.entities.CasaEntity;
 import com.rdai.data.models.entities.UsuarioEntity;
 import com.rdai.domain.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class HouseCreation {
 
     @Autowired

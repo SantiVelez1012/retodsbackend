@@ -39,8 +39,8 @@ public class BusquedaCasaService {
         return casaRepository.findById(id);
     }
 
-    public List<CasaEntity> getByCriterio(SearchValidation searchValidation){
-        return casaRepository.findAllByCriterio(searchValidation);
+    public List<CasaEntity> getByCriterial(SearchValidation searchValidation){
+        return casaRepository.findAllByCriterial(searchValidation);
     }
 
 

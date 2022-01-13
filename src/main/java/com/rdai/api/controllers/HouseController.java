@@ -25,14 +25,16 @@ public class HouseController {
     @Autowired
     private CasaService casaService;
 
+    @Autowired
     private HouseCreation houseCreation;
 
     @CrossOrigin
     @PostMapping(SAVE)
-    @PreAuthorize("hasRole('anfitrion')")
     public ResponseEntity<MessageValidation> guardarCasa(@Valid @RequestBody CasaValidation casaValidation,
                                                          BindingResult bindingResult,
                                                          @RequestHeader("Authorization") String token){
+        token = token.split(" ")[1];
+
         if(bindingResult.hasErrors()){
             return new ResponseEntity<MessageValidation>(new MessageValidation("Campos mal puestos"), HttpStatus.BAD_REQUEST);
         }
