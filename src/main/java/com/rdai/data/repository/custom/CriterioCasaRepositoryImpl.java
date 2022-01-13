@@ -12,13 +12,13 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CriterioCasaRepoImpl implements CriterioCasaRepository {
+public class CriterioCasaRepositoryImpl implements CriterioCasaRepository {
 
     @Autowired
     private EntityManager entityManager;
 
     @Override
-    public List<CasaEntity> findAllByCriterio(SearchValidation searchValidation){
+    public List<CasaEntity> findAllByCriterial(SearchValidation searchValidation){
 
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 
