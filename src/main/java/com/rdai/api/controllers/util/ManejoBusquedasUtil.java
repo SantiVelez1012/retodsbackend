@@ -4,6 +4,7 @@ package com.rdai.api.controllers.util;
 import com.rdai.api.validations.CasaValidation;
 import com.rdai.api.validations.SearchValidation;
 import com.rdai.domain.services.BusquedaCasaService;
+import com.rdai.domain.services.CalificacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,9 @@ public class ManejoBusquedasUtil {
     @Autowired
     private BusquedaCasaService bCasaService;
 
+    @Autowired
+    private CalificacionService calificacionService;
+
     public List<CasaValidation> buscandoCasas(){
 
         List<CasaValidation> result = new ArrayList<>();
@@ -25,7 +29,7 @@ public class ManejoBusquedasUtil {
             CasaValidation casaValidation = CasaValidation.builder().idCasa(casa.getIdCasa().toString())
                     .idPropietario(casa.getUsuarioEntity().getNombreUsuario()).pais(casa.getPais())
                     .estado(casa.getEstado()).ciudad(casa.getCiudad()).telefono(casa.getTelefono())
-                    .direccion(casa.getDireccion()).foto(casa.getFoto()).build();
+                    .direccion(casa.getDireccion()).foto(casa.getFoto()).calificaciones(calificacionService.obtenerCalificacion(casa.getIdCasa())).build();
             result.add(casaValidation);
         });
         return result;

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -40,6 +41,8 @@ public class CasaValidation {
     @NotNull
     @NotBlank
     private String foto;
+
+    private List<Integer> calificaciones;
 
     public String getDireccion() {
         return direccion;
