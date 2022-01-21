@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,12 +19,24 @@ public class DisponibilidadCasaService {
     @Autowired
     private DisponibilidadCasaRepository dispRepo;
 
-    public List<DisponibilidadCasaEntity> findAllByCasa(CasaEntity casaEntity){
-        return dispRepo.findAllByCasaEntity(casaEntity);
+
+    public DisponibilidadCasaEntity guardarReserva(DisponibilidadCasaEntity nuevaReserva){
+        return dispRepo.save(nuevaReserva);
     }
 
-    public List<DisponibilidadCasaEntity> findAllByUsuario(UsuarioEntity usuarioEntity){
-        return dispRepo.findAllByUsuarioReservado(usuarioEntity);
+    public boolean verificarDisponibilidad(Integer idCasa, LocalDate fechaInicio, LocalDate fechaFin){
+
+        List<DisponibilidadCasaEntity> reservas = dispRepo.findAllByCasaReservadaAndBetweenDate(idCasa, fechaInicio, fechaFin);
+
+        return reservas.isEmpty();
+    }
+
+    public List<DisponibilidadCasaEntity> findAllByCasa(Integer idCasa){
+        return dispRepo.findAllByCasaEntity_IdCasa(idCasa);
+    }
+
+    public List<DisponibilidadCasaEntity> findAllByUsuario(String userName){
+        return dispRepo.findAllByUsuarioReservado_NombreUsuario(userName);
     }
 
 }
