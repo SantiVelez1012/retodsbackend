@@ -27,7 +27,6 @@ public class DisponibilidadCasaService {
     public boolean verificarDisponibilidad(Integer idCasa, LocalDate fechaInicio, LocalDate fechaFin){
 
         List<DisponibilidadCasaEntity> reservas = dispRepo.findAllByCasaReservadaAndBetweenDate(idCasa, fechaInicio, fechaFin);
-
         return reservas.isEmpty();
     }
 

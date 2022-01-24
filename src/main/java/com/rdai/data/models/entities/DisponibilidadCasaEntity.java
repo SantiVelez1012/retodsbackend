@@ -18,6 +18,7 @@ public class DisponibilidadCasaEntity {
 
     @Id
     @Column(name = "id_disp")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDisp;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

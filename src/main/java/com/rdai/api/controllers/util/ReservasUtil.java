@@ -38,7 +38,7 @@ public class ReservasUtil {
         return usuarioService.getByUsername(username).orElse(null);
     }
 
-    public boolean validarFechas(DisponibilidadValidation dispValidation) throws ParseException {
+    public boolean validarFechas(DisponibilidadValidation dispValidation){
 
 
         LocalDate fechaInicio = LocalDate.parse(dispValidation.getFechaInicio(), formatter);
@@ -46,15 +46,7 @@ public class ReservasUtil {
 
         LocalDate fechaActual = LocalDate.now();
 
-        System.out.println(fechaInicio);
-        System.out.println(fechaFin);
-
-        if(!fechaActual.isAfter(fechaInicio) || !fechaFin.isEqual(fechaActual)
-                || !fechaActual.isAfter(fechaFin) || !fechaFin.isBefore(fechaInicio)){
-            return true;
-        }
-
-        return false;
+        return !fechaActual.isAfter(fechaInicio) && !fechaActual.isAfter(fechaFin);
     }
 
 

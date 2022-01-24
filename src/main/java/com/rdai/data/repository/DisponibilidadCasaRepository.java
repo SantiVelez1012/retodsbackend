@@ -1,8 +1,6 @@
 package com.rdai.data.repository;
 
-import com.rdai.data.models.entities.CasaEntity;
 import com.rdai.data.models.entities.DisponibilidadCasaEntity;
-import com.rdai.data.models.entities.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

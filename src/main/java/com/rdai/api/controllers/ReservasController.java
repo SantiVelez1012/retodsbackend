@@ -34,13 +34,7 @@ public class ReservasController {
     @PostMapping(CREARESERVA)
     public ResponseEntity<MessageValidation> crearReserva(@Valid @RequestBody DisponibilidadValidation reserva,
                                                           BindingResult bindingResult,
-                                                          @RequestHeader("Authorization") String token) throws ParseException {
-
-        System.out.println(reserva.getFechaInicio());
-        System.out.println(reserva.getFechaFin());
-        System.out.println(reserva.getIdCasa());
-        System.out.println(reserva.getIdDisp());
-        System.out.println(reserva.getUsuarioReservado());
+                                                          @RequestHeader("Authorization") String token) {
 
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(new MessageValidation("Campos mal puestos"), HttpStatus.BAD_REQUEST);
@@ -61,6 +55,7 @@ public class ReservasController {
             reservaService.guardarReserva(dispEntity);
             return new ResponseEntity<>(new MessageValidation("Reserva creada correctamente"), HttpStatus.CREATED);
         }catch(Exception e){
+            System.out.println(e);
             return new ResponseEntity<>(new MessageValidation("Error desconocido. perdòn :c"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
