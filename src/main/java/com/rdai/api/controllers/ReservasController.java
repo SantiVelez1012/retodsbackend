@@ -21,7 +21,7 @@ public class ReservasController {
 
     public static final String RUTAPRINCIPAL = "/api/reservas";
     public static final String BUSCARPORUSUARIO = "/busquedau";
-    public static final String BUSCARPORCASA = "/busquedac";
+    public static final String BUSCARPORCASA = "/busquedac/:id";
     public static final String CREARESERVA = "/crear";
 
     @Autowired
@@ -36,16 +36,22 @@ public class ReservasController {
                                                           BindingResult bindingResult,
                                                           @RequestHeader("Authorization") String token) throws ParseException {
 
+        System.out.println(reserva.getFechaInicio());
+        System.out.println(reserva.getFechaFin());
+        System.out.println(reserva.getIdCasa());
+        System.out.println(reserva.getIdDisp());
+        System.out.println(reserva.getUsuarioReservado());
+
         if(bindingResult.hasErrors()){
-            return new ResponseEntity<MessageValidation>(new MessageValidation("Campos mal puestos"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MessageValidation("Campos mal puestos"), HttpStatus.BAD_REQUEST);
         }
 
-        if(!reservasUtil.validarFechas(reserva) || !reservasUtil.verificarDisponibilidad(reserva)){
-            return new ResponseEntity<MessageValidation>(new MessageValidation("La casa no puede ser reservada"), HttpStatus.NOT_ACCEPTABLE);
+        if(!reservasUtil.validarFechas(reserva)){
+            return new ResponseEntity<>(new MessageValidation("La casa no puede ser reservada"), HttpStatus.NOT_ACCEPTABLE);
         }
 
         if(!reservasUtil.verificarDisponibilidad(reserva)){
-            return new ResponseEntity<MessageValidation>(new MessageValidation("La casa no está disponible para esas fechas"), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(new MessageValidation("La casa no está disponible para esas fechas"), HttpStatus.CONFLICT);
         }
 
 

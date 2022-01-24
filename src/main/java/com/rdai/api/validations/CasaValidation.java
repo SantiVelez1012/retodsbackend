@@ -42,8 +42,6 @@ public class CasaValidation {
     @NotBlank
     private String foto;
 
-    private List<Integer> calificaciones;
-
     public String getDireccion() {
         return direccion;
     }
