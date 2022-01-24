@@ -17,9 +17,7 @@ public class DisponibilidadValidation {
 
     private String idDisp;
 
-    @NotNull
-    @NotBlank
-    private String idUsuario;
+    private String usuarioReservado;
 
     @NotNull
     @NotBlank
@@ -40,8 +38,8 @@ public class DisponibilidadValidation {
         return idDisp;
     }
 
-    public String getIdUsuario() {
-        return idUsuario;
+    public String getUsuarioReservado() {
+        return usuarioReservado;
     }
 
     public String getIdCasa() {

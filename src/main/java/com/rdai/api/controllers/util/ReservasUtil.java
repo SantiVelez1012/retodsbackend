@@ -32,7 +32,7 @@ public class ReservasUtil {
     @Autowired
     private DisponibilidadCasaService dispService;
 
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public UsuarioEntity buscarUser(String username){
         return usuarioService.getByUsername(username).orElse(null);
@@ -40,18 +40,21 @@ public class ReservasUtil {
 
     public boolean validarFechas(DisponibilidadValidation dispValidation) throws ParseException {
 
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaInicio = formato.parse(dispValidation.getFechaInicio());
-        Date fechaFin = formato.parse(dispValidation.getFechaFin());
 
-        Date fechaActual = new Date(System.currentTimeMillis());
+        LocalDate fechaInicio = LocalDate.parse(dispValidation.getFechaInicio(), formatter);
+        LocalDate fechaFin = LocalDate.parse(dispValidation.getFechaFin(), formatter);
 
-        if((fechaActual.compareTo(fechaInicio) <= 0 || fechaFin.equals(fechaActual))
-                || (fechaActual.after(fechaFin) || fechaFin.before(fechaInicio))){
-            return false;
+        LocalDate fechaActual = LocalDate.now();
+
+        System.out.println(fechaInicio);
+        System.out.println(fechaFin);
+
+        if(!fechaActual.isAfter(fechaInicio) || !fechaFin.isEqual(fechaActual)
+                || !fechaActual.isAfter(fechaFin) || !fechaFin.isBefore(fechaInicio)){
+            return true;
         }
 
-        return true;
+        return false;
     }
 
 
@@ -71,13 +74,16 @@ public class ReservasUtil {
 
         String username = jwtProvider.getUserNameFromToken(token);
 
+        LocalDate fechaInicio = LocalDate.parse(disponibilidadValidation.getFechaInicio(), formatter);
+        LocalDate fechaFin = LocalDate.parse(disponibilidadValidation.getFechaFin(), formatter);
+
         UsuarioEntity usuarioReserva = buscarUser(username);
 
         CasaEntity casa = bcasaService.getById(Integer.parseInt(disponibilidadValidation.getIdCasa())).orElseGet(null);
 
         return DisponibilidadCasaEntity.builder()
-                .fechaInicio(disponibilidadValidation.getFechaInicio())
-                .fechaFin(disponibilidadValidation.getFechaFin())
+                .fechaInicio(fechaInicio)
+                .fechaFin(fechaFin)
                 .idDisp(null)
                 .casaEntity(casa)
                 .usuarioReservado(usuarioReserva).build();

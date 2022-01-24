@@ -29,7 +29,7 @@ public class ManejoBusquedasUtil {
             CasaValidation casaValidation = CasaValidation.builder().idCasa(casa.getIdCasa().toString())
                     .idPropietario(casa.getUsuarioEntity().getNombreUsuario()).pais(casa.getPais())
                     .estado(casa.getEstado()).ciudad(casa.getCiudad()).telefono(casa.getTelefono())
-                    .direccion(casa.getDireccion()).foto(casa.getFoto()).calificaciones(calificacionService.obtenerCalificacion(casa.getIdCasa())).build();
+                    .direccion(casa.getDireccion()).foto(casa.getFoto()).build();
             result.add(casaValidation);
         });
         return result;

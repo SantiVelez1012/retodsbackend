@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,11 +22,11 @@ public class DisponibilidadCasaEntity {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_inicio")
-    private String fechaInicio;
+    private LocalDate fechaInicio;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_fin")
-    private String fechaFin;
+    private LocalDate fechaFin;
 
     @JoinColumn(name = "fk_casa")
     @ManyToOne
@@ -43,11 +44,11 @@ public class DisponibilidadCasaEntity {
         return usuarioReservado;
     }
 
-    public String getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public String getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
