@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface DisponibilidadCasaRepository extends JpaRepository<DisponibilidadCasaEntity,Integer> {
+public interface
+
+DisponibilidadCasaRepository extends JpaRepository<DisponibilidadCasaEntity,Integer> {
 
     @Query(
             "SELECT d FROM DisponibilidadCasaEntity d WHERE d.casaEntity.idCasa = ?1 AND " +
