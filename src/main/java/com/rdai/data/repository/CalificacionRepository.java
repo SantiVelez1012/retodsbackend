@@ -12,4 +12,6 @@ public interface CalificacionRepository extends JpaRepository<CalificacionEntity
     List<CalificacionEntity> findAllByDisponibilidadCasaEntity_CasaEntity_IdCasa(Integer idCasa);
 
     List<CalificacionEntity> findAllByDisponibilidadCasaEntity_UsuarioReservado_NombreUsuario(String nombreUsuario);
+
+    List<CalificacionEntity> findAllByDisponibilidadCasaEntity_IdDisp(Integer idDisp);
 }

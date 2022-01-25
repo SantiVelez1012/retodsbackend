@@ -38,4 +38,8 @@ public class CalificacionService {
     public CalificacionEntity guardarCalificacion(CalificacionEntity calificacion){
         return calificacionRepository.save(calificacion);
     }
+
+    public List<CalificacionEntity> buscarPorIdReserva(Integer idReserva){
+        return calificacionRepository.findAllByDisponibilidadCasaEntity_IdDisp(idReserva);
+    }
 }
