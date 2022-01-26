@@ -31,5 +31,9 @@ public class CasaService {
         return casaRepository.findAllByCiudad(ciudad);
     }
 
+    public List<CasaEntity> findAllByPropietario(String nombreUsuario){
+        return casaRepository.findAllByUsuarioEntity_NombreUsuario(nombreUsuario);
+    }
+
 
 }

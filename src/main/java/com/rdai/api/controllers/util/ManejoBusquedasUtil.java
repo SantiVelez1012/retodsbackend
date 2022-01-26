@@ -5,6 +5,7 @@ import com.rdai.api.validations.CasaValidation;
 import com.rdai.api.validations.SearchValidation;
 import com.rdai.domain.services.BusquedaCasaService;
 import com.rdai.domain.services.CalificacionService;
+import com.rdai.domain.services.CasaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,9 @@ public class ManejoBusquedasUtil {
 
     @Autowired
     private BusquedaCasaService bCasaService;
+
+    @Autowired
+    private CasaService casaService;
 
     @Autowired
     private CalificacionService calificacionService;
@@ -53,6 +57,15 @@ public class ManejoBusquedasUtil {
                     .estado(casa.getEstado()).ciudad(casa.getCiudad()).telefono(casa.getTelefono())
                     .direccion(casa.getDireccion()).foto(casa.getFoto()).build()).collect(Collectors.toList());
 
+    }
+
+
+    public List<CasaValidation> busquedaPorPropietarioConSesionIniciada(String username){
+        return casaService.findAllByPropietario(username).stream().map(casa ->
+                CasaValidation.builder().idCasa(casa.getIdCasa().toString())
+                        .idPropietario(casa.getUsuarioEntity().getNombreUsuario()).pais(casa.getPais())
+                        .estado(casa.getEstado()).ciudad(casa.getCiudad()).telefono(casa.getTelefono())
+                        .direccion(casa.getDireccion()).foto(casa.getFoto()).build()).collect(Collectors.toList());
     }
 
 
