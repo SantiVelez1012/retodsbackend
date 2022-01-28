@@ -15,15 +15,6 @@ public class CalificacionService {
     @Autowired
     private CalificacionRepository calificacionRepository;
 
-    /*public List<Integer> obtenerCalificacion(Integer idCasa) {
-        //TODO:BUSCAR CALIFICACIONES DE UNA RESERVA DADO ID DE CASA
-        // FILTRAR VALORES DISTINTOS DE NULL
-
-        List<Integer> calificaciones = List.of(5);
-
-        return calificaciones.stream().map(calificacion.getPuntaje()).filter(Objects::nonNull).collect(Collectors.toList());
-
-    }*/
 
     public List<CalificacionEntity> buscarPorIdCasa(Integer idCasa){
         return calificacionRepository.findAllByDisponibilidadCasaEntity_CasaEntity_IdCasa(idCasa);

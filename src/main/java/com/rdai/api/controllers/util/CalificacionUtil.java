@@ -52,6 +52,32 @@ public class CalificacionUtil {
 
     }
 
+    public List<CalificacionValidation> buscarPorNombreUsuario(String nombreUsuario){
+
+        return calificacionService.buscarPorNombreUsuario(nombreUsuario).stream().map(data ->
+                CalificacionValidation.builder().idCalificacion(data.getIdCalificacion().toString())
+                        .idDisp(data.getDisponibilidadCasaEntity().getIdDisp().toString())
+                        .comentarioEstadia(data.getComentarioEstadia())
+                        .puntajeEstadia(data.getPuntajeEstadia())
+                        .comentarioViajero(data.getComentarioViajero())
+                        .puntajeViajero(data.getPuntajeViajero())
+                        .build()).collect(Collectors.toList());
+
+    }
+
+    public List<CalificacionValidation> buscarPorIdCasa(String idCasa){
+
+        return calificacionService.buscarPorIdCasa(Integer.parseInt(idCasa)).stream().map(data ->
+                CalificacionValidation.builder().idCalificacion(data.getIdCalificacion().toString())
+                        .idDisp(data.getDisponibilidadCasaEntity().getIdDisp().toString())
+                        .comentarioEstadia(data.getComentarioEstadia())
+                        .puntajeEstadia(data.getPuntajeEstadia())
+                        .comentarioViajero(data.getComentarioViajero())
+                        .puntajeViajero(data.getPuntajeViajero())
+                        .build()).collect(Collectors.toList());
+
+    }
+
 
 
 }

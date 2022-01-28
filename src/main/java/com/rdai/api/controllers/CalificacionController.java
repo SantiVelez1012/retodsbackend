@@ -23,7 +23,8 @@ public class CalificacionController {
     public static final String RUTAPRINCIPAL = "/api/calificaciones";
     public static final String BUSCARPORIDRESERVA = "/busquedaid/{id}";
     public static final String CREARCALIFICACION = "/crear";
-    public static final String CALIFICARCREADA = "/calificarc";
+    public static final String BUSCARPORIDCASA = "/busquedaidcasa/{id}";
+    public static final String BUSCARPORNOMBREUSUARIO = "/busquedanombreusuario/{id}";
 
     @Autowired
     private CalificacionService calificacionService;
@@ -58,5 +59,22 @@ public class CalificacionController {
 
     }
 
+    @GetMapping(BUSCARPORIDCASA)
+    public ResponseEntity<List<CalificacionValidation>> buscarPorIdCasa(@PathVariable String id){
+
+        List<CalificacionValidation> calificacion = calificacionUtil.buscarPorIdCasa(id);
+
+        return new ResponseEntity<>(calificacion, HttpStatus.OK);
+
+    }
+
+    @GetMapping(BUSCARPORNOMBREUSUARIO)
+    public ResponseEntity<List<CalificacionValidation>> buscarPorNombreUsuario(@PathVariable String id){
+
+        List<CalificacionValidation> calificacion = calificacionUtil.buscarPorNombreUsuario(id);
+
+        return new ResponseEntity<>(calificacion, HttpStatus.OK);
+
+    }
 
 }
