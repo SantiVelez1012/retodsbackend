@@ -15,4 +15,15 @@ public class PublicUserValidation {
 
     private String pais;
 
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public String getPais() {
+        return pais;
+    }
 }
