@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,7 +26,6 @@ public class DisponibilidadCasaService {
     }
 
     public boolean verificarDisponibilidad(Integer idCasa, LocalDate fechaInicio, LocalDate fechaFin){
-
         List<DisponibilidadCasaEntity> reservas = dispRepo.findAllByCasaReservadaAndBetweenDate(idCasa, fechaInicio, fechaFin);
         return reservas.isEmpty();
     }
@@ -36,6 +36,10 @@ public class DisponibilidadCasaService {
 
     public List<DisponibilidadCasaEntity> findAllByUsuario(String userName){
         return dispRepo.findAllByUsuarioReservado_NombreUsuario(userName);
+    }
+
+    public Optional<DisponibilidadCasaEntity> findByID(String id){
+        return dispRepo.findById(Integer.parseInt(id));
     }
 
 }

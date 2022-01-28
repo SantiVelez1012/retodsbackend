@@ -22,7 +22,9 @@ public class ReservaSearchUtil {
                 DisponibilidadValidation.builder().usuarioReservado(data.getUsuarioReservado().getNombreUsuario())
                         .idCasa(data.getCasaEntity().getIdCasa().toString())
                         .fechaInicio(data.getFechaInicio().format(formatter))
-                        .fechaFin(data.getFechaFin().format(formatter)).build()).collect(Collectors.toList());
+                        .fechaFin(data.getFechaFin().format(formatter))
+                        .idDisp(data.getIdDisp().toString())
+                        .build()).collect(Collectors.toList());
     }
 
 
@@ -32,7 +34,9 @@ public class ReservaSearchUtil {
                 DisponibilidadValidation.builder().usuarioReservado(data.getUsuarioReservado().getNombreUsuario())
                         .idCasa(data.getCasaEntity().getIdCasa().toString())
                         .fechaInicio(data.getFechaInicio().format(formatter))
-                        .fechaFin(data.getFechaFin().format(formatter)).build()).collect(Collectors.toList());
+                        .fechaFin(data.getFechaFin().format(formatter))
+                        .idDisp(data.getIdDisp().toString())
+                        .build()).collect(Collectors.toList());
     }
 
 
